@@ -1,0 +1,6 @@
+package com.theimpulson.notes
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
