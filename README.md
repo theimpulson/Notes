@@ -1,16 +1,20 @@
-# notes
+Notes
+--------
 
-A new Flutter project.
+A simple notes app written in dart using flutter framework.
 
-## Getting Started
+## Compilation
 
-This project is a starting point for a Flutter application.
+To compile this app, simply clone the repo and run the following command:
 
-A few resources to get you started if this is your first Flutter project:
+```
+flutter build <package-type> --target-platform <platform> --split-per-abi
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Package types can be : `apk` or `aab`
+- Platforms can be : As supported by Flutter for e.g. `android-arm`, `android-arm64` etc. If no platform is specified, flutter will default to all platforms supported at the moment.
+- If `--split-per-abi` argument is not provided, Flutter will generate a `fat` package which will be larger in size but will support all platforms.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Development
+
+You can simply import this project into your Android Studio or VS Code. Follow [official instructions](https://flutter.dev/docs/get-started/install) to set up SDKs required for development if not done already.
