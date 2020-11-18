@@ -33,6 +33,7 @@ class NewNote extends StatelessWidget {
           _dbhelpers.insert(_newNote.text);
           log('${_newNote.text}',
               name: 'com.theimpulson.notes: New Note Added');
+          _newNote.clear();
           Navigator.pop(context);
         },
       ),
