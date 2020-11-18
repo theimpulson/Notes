@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: snapshot == null ? 0 : snapshot.data.length,
                 itemBuilder: (context, index) {
                   return ListTile(
+                    key: Key(snapshot.data[index]['id'].toString()),
                     title: Text(snapshot.data[index]['note']),
                   );
                 },
