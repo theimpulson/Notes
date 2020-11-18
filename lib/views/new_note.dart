@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:notes/database/database_helpers.dart';
 
@@ -30,7 +31,8 @@ class NewNote extends StatelessWidget {
         backgroundColor: Colors.amber,
         onPressed: () {
           _dbhelpers.insert(_newNote.text);
-          print('${_newNote.text}');
+          log('${_newNote.text}',
+              name: 'com.theimpulson.notes: New Note Added');
           Navigator.pop(context);
         },
       ),
