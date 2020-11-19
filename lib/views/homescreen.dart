@@ -36,7 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: snapshot == null ? 0 : snapshot.data.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    background: Container(color: Colors.red),
+                    background: Container(
+                      color: Colors.red,
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      ),
+                    ),
                     key: Key(snapshot.data[index]['id'].toString()),
                     child: Column(
                       children: <Widget>[
@@ -64,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       DatabaseHelpers()
                           .delete(snapshot.data[index]['id'].toString());
                     },
+                    direction: DismissDirection.endToStart,
                   );
                 },
               );
