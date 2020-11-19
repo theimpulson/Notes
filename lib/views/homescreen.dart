@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/views/edit_note.dart';
 import 'package:notes/views/new_note.dart';
 import 'package:notes/database/database_helpers.dart';
 
@@ -34,9 +35,28 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListView.builder(
                 itemCount: snapshot == null ? 0 : snapshot.data.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    key: Key(snapshot.data[index]['id'].toString()),
-                    title: Text(snapshot.data[index]['note']),
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                        key: Key(snapshot.data[index]['id'].toString()),
+                        title: Text(snapshot.data[index]['note']),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return EditNote(
+                                  passedID:
+                                      snapshot.data[index]['id'].toString(),
+                                  passedNote: snapshot.data[index]['note'],
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                      Divider(),
+                    ],
                   );
                 },
               );
