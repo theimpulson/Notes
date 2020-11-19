@@ -23,6 +23,12 @@ class _EditNoteState extends State<EditNote> {
   }
 
   @override
+  void dispose() {
+    _editNote.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -46,7 +52,6 @@ class _EditNoteState extends State<EditNote> {
         onPressed: () {
           _dbhelpers.update(widget.passedID, _editNote.text);
           log('${_editNote.text}', name: 'com.theimpulson.notes: Note Edited');
-          _editNote.clear();
           Navigator.pop(context);
         },
       ),

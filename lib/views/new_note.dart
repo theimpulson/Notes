@@ -5,8 +5,19 @@ import 'package:notes/database/database_helpers.dart';
 DatabaseHelpers _dbhelpers = DatabaseHelpers();
 TextEditingController _newNote = TextEditingController();
 
-class NewNote extends StatelessWidget {
-  const NewNote({Key key}) : super(key: key);
+class NewNote extends StatefulWidget {
+  NewNote({Key key}) : super(key: key);
+
+  @override
+  _NewNoteState createState() => _NewNoteState();
+}
+
+class _NewNoteState extends State<NewNote> {
+  @override
+  void dispose() {
+    _newNote.clear();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +44,6 @@ class NewNote extends StatelessWidget {
           _dbhelpers.insert(_newNote.text);
           log('${_newNote.text}',
               name: 'com.theimpulson.notes: New Note Added');
-          _newNote.clear();
           Navigator.pop(context);
         },
       ),
