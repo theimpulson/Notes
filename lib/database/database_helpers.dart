@@ -29,7 +29,7 @@ class DatabaseHelpers extends DatabaseInit {
     final db = await connectDB();
 
     await db.rawDelete(
-      "DELETE FROM ${DatabaseInit.TABLE_NAME} WHERE $id",
+      "DELETE FROM ${DatabaseInit.TABLE_NAME} WHERE ${DatabaseInit.ID} = $id",
     );
   }
 

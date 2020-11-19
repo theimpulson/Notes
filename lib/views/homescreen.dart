@@ -35,28 +35,35 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListView.builder(
                 itemCount: snapshot == null ? 0 : snapshot.data.length,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: <Widget>[
-                      ListTile(
-                        key: Key(snapshot.data[index]['id'].toString()),
-                        title: Text(snapshot.data[index]['note']),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return EditNote(
-                                  passedID:
-                                      snapshot.data[index]['id'].toString(),
-                                  passedNote: snapshot.data[index]['note'],
-                                );
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                      Divider(),
-                    ],
+                  return Dismissible(
+                    background: Container(color: Colors.red),
+                    key: Key(snapshot.data[index]['id'].toString()),
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          title: Text(snapshot.data[index]['note']),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return EditNote(
+                                    passedID:
+                                        snapshot.data[index]['id'].toString(),
+                                    passedNote: snapshot.data[index]['note'],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        Divider(),
+                      ],
+                    ),
+                    onDismissed: (direction) {
+                      DatabaseHelpers()
+                          .delete(snapshot.data[index]['id'].toString());
+                    },
                   );
                 },
               );
