@@ -49,7 +49,22 @@ class LocalDrawer extends StatelessWidget {
                     'Notes: A simple notes app written in Dart using Flutter framework\n\nCopyright (C) 2020  Aayush Gupta',
               );
             },
-          )
+          ),
+          ListTile(
+            title: Text('Help'),
+            onTap: () {
+              Navigator.pop(context);
+              return Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  content: Text(
+                    'Click on the + button to add a Note. Swipe to delete it.',
+                    style: TextStyle(color: Theme.of(context).accentColor),
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
