@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:notes/views/edit_note.dart';
 import 'package:notes/views/new_note.dart';
 import 'package:notes/database/database_helpers.dart';
@@ -19,8 +20,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        brightness: Brightness.light,
+        elevation: 0.5,
+      ),
       body: Container(
         padding: EdgeInsets.all(20.0),
         child: FutureBuilder(
