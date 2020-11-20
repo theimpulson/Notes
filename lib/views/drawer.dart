@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class LocalDrawer extends StatelessWidget {
   const LocalDrawer({Key key}) : super(key: key);
@@ -16,13 +17,27 @@ class LocalDrawer extends StatelessWidget {
                 Image(
                   image: AssetImage('assets/icon.png'),
                 ),
-                Text('\tNotes'),
+                Text('\tNotes version 1.0.0'),
+                Container(
+                  height: 50,
+                  child: VerticalDivider(
+                    indent: 5.0,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.share),
+                  onPressed: () {
+                    return Share.share(
+                        'Check out this simple and useful Notes app on Github\n\nhttps://github.com/theimpulson/Notes');
+                  },
+                )
               ],
             ),
           ),
           ListTile(
             title: Text('About'),
             onTap: () {
+              Navigator.pop(context);
               return showAboutDialog(
                 context: context,
                 applicationIcon: Image(
@@ -31,7 +46,7 @@ class LocalDrawer extends StatelessWidget {
                 applicationName: 'Notes',
                 applicationVersion: 'version 1.0.0',
                 applicationLegalese:
-                    'Notes: A simple notes app written in dart using flutter framework\n\nCopyright (C) 2020  Aayush Gupta',
+                    'Notes: A simple notes app written in Dart using Flutter framework\n\nCopyright (C) 2020  Aayush Gupta',
               );
             },
           )
