@@ -24,6 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
       statusBarColor: Colors.white,
       statusBarBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return Scaffold(
       appBar: AppBar(
