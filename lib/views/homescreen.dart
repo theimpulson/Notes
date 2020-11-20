@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:notes/views/drawer.dart';
 import 'package:notes/views/edit_note.dart';
 import 'package:notes/views/new_note.dart';
 import 'package:notes/database/database_helpers.dart';
@@ -99,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ),
+      drawer: LocalDrawer(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.amber,
