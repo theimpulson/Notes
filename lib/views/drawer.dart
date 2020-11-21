@@ -8,7 +8,7 @@ class LocalDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     String app_name = 'Notes';
     String app_version = 'version 1.1.0';
-    String app_icon = 'assets/icon.png';
+    String app_icon = 'assets/icon_48.png';
 
     return Drawer(
       child: ListView(
