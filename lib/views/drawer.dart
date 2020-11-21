@@ -6,6 +6,10 @@ class LocalDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String app_name = 'Notes';
+    String app_version = 'version 1.1.0';
+    String app_icon = 'assets/icon.png';
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -15,9 +19,9 @@ class LocalDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image(
-                  image: AssetImage('assets/icon.png'),
+                  image: AssetImage(app_icon),
                 ),
-                Text('\tNotes version 1.0.0'),
+                Text('\t$app_name $app_version'),
                 Container(
                   height: 50,
                   child: VerticalDivider(
@@ -41,10 +45,10 @@ class LocalDrawer extends StatelessWidget {
               return showAboutDialog(
                 context: context,
                 applicationIcon: Image(
-                  image: AssetImage('assets/icon.png'),
+                  image: AssetImage(app_icon),
                 ),
-                applicationName: 'Notes',
-                applicationVersion: 'version 1.0.0',
+                applicationName: app_name,
+                applicationVersion: app_version,
                 applicationLegalese:
                     'Notes: A simple notes app written in Dart using Flutter framework\n\nCopyright (C) 2020  Aayush Gupta',
               );
