@@ -1,7 +1,8 @@
 Notes
 --------
+A simple notes app written in Dart using Flutter framework.
 
-A simple notes app written in dart using flutter framework.
+<a href='https://play.google.com/store/apps/details?id=com.theimpulson.notes'><img src='assets/google-play.png' alt='Get it on Google Play' height=45/></a>
 
 ## Compilation
 
