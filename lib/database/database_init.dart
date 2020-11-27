@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart';
 
 class DatabaseInit {
-  // Intializes a SQL database in the app-specific database directory
+  /// Intializes a SQL database in the app-specific database directory
 
   static const TABLE_NAME = 'notes';
   static const ID = 'id';
@@ -15,6 +15,7 @@ class DatabaseInit {
   }
 
   Future<Database> connectDB() async {
+    /// Opens a database connection at the given path, creates if non-existing
     return await openDatabase(
       await dbPath(),
       version: VERSION,
