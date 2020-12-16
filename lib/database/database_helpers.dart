@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:notes/database/database_init.dart';
 
-class DatabaseHelpers extends DatabaseInit {
+class DatabaseHelpers {
   /// Contains various helper functions to manage database
   ///
   /// Contains 4 functions namely queryAll, insert, delete & update
@@ -12,7 +12,7 @@ class DatabaseHelpers extends DatabaseInit {
     /// Returns a List of all notes present in database
     ///
     /// List contains Maps having 'id' and 'note' as keys
-    final db = await connectDB();
+    final db = await DatabaseInit.instance.connectDB();
 
     return db.rawQuery(
       "SELECT ${DatabaseInit.ID},${DatabaseInit.NOTE} FROM ${DatabaseInit.TABLE_NAME}",
@@ -26,7 +26,7 @@ class DatabaseHelpers extends DatabaseInit {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     int idValue = prefs.getInt('dbID');
-    final db = await connectDB();
+    final db = await DatabaseInit.instance.connectDB();
 
     await db.rawInsert(
       "INSERT INTO ${DatabaseInit.TABLE_NAME} (${DatabaseInit.ID}, ${DatabaseInit.NOTE}) VALUES (?, ?)",
@@ -37,7 +37,7 @@ class DatabaseHelpers extends DatabaseInit {
 
   Future<void> delete(String id) async {
     /// Deletes the note from the database using the given [id]
-    final db = await connectDB();
+    final db = await DatabaseInit.instance.connectDB();
 
     await db.rawDelete(
       "DELETE FROM ${DatabaseInit.TABLE_NAME} WHERE ${DatabaseInit.ID} = $id",
@@ -46,7 +46,7 @@ class DatabaseHelpers extends DatabaseInit {
 
   Future<void> update(String id, String text) async {
     /// Updates an exisiting note in the database using given [id] and [text]
-    final db = await connectDB();
+    final db = await DatabaseInit.instance.connectDB();
 
     await db.rawUpdate(
       "UPDATE ${DatabaseInit.TABLE_NAME} SET ${DatabaseInit.NOTE} = '$text' WHERE ${DatabaseInit.ID} = $id",
