@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class LocalDrawer extends StatelessWidget {
-  const LocalDrawer({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     String app_name = 'Notes';

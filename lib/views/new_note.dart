@@ -6,8 +6,6 @@ DatabaseHelpers _dbhelpers = DatabaseHelpers();
 TextEditingController _newNote = TextEditingController();
 
 class NewNote extends StatefulWidget {
-  NewNote({Key key}) : super(key: key);
-
   @override
   _NewNoteState createState() => _NewNoteState();
 }
