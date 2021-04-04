@@ -47,7 +47,7 @@ class _NewNoteState extends State<NewNote> {
           Navigator.pop(context);
         },
       ),
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
     );
   }
 }

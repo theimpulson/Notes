@@ -55,7 +55,7 @@ class _EditNoteState extends State<EditNote> {
           Navigator.pop(context);
         },
       ),
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
     );
   }
 }
