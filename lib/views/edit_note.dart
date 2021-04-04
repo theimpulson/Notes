@@ -2,8 +2,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:notes/database/database_helpers.dart';
 
-DatabaseHelpers _dbhelpers = DatabaseHelpers();
-
 class EditNote extends StatefulWidget {
   EditNote({@required this.passedID, @required this.passedNote});
   final String passedID;
@@ -14,6 +12,7 @@ class EditNote extends StatefulWidget {
 }
 
 class _EditNoteState extends State<EditNote> {
+  DatabaseHelpers _dbhelpers = DatabaseHelpers();
   TextEditingController _editNote = TextEditingController();
 
   @override

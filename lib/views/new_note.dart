@@ -2,15 +2,15 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:notes/database/database_helpers.dart';
 
-DatabaseHelpers _dbhelpers = DatabaseHelpers();
-TextEditingController _newNote = TextEditingController();
-
 class NewNote extends StatefulWidget {
   @override
   _NewNoteState createState() => _NewNoteState();
 }
 
 class _NewNoteState extends State<NewNote> {
+  DatabaseHelpers _dbhelpers = DatabaseHelpers();
+  TextEditingController _newNote = TextEditingController();
+
   @override
   void dispose() {
     _newNote.clear();
