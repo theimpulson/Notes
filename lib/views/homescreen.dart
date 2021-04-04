@@ -13,10 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int count = 0;
 
-  Future<List<Map<String, dynamic>>> startAsyncInit() async {
-    return await DatabaseHelpers().queryAll();
-  }
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -35,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         padding: EdgeInsets.all(20.0),
         child: FutureBuilder(
-          future: startAsyncInit(),
+          future: DatabaseHelpers().queryAll(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
