@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int count = 0;
+  int? count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: FutureBuilder(
           future: DatabaseHelpers().queryAll(),
           builder: (context, snapshot) {
+            // typecast snapshot.data to avoid type errors
+            var notes = snapshot.data as List<Map<String, dynamic>>;
+
             if (snapshot.hasData) {
-              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+              WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
                 setState(() {
-                  count = snapshot.data.length;
+                  count = notes.length;
                 });
               });
+
               return ListView.builder(
-                itemCount: snapshot == null ? 0 : snapshot.data.length,
+                itemCount: notes.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
                     background: Container(
@@ -49,20 +53,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                       ),
                     ),
-                    key: Key(snapshot.data[index]['id'].toString()),
+                    key: Key(notes[index]['id'].toString()),
                     child: Column(
                       children: <Widget>[
                         ListTile(
-                          title: Text(snapshot.data[index]['note']),
+                          title: Text(notes[index]['note']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
                                   return EditNote(
-                                    passedID:
-                                        snapshot.data[index]['id'].toString(),
-                                    passedNote: snapshot.data[index]['note'],
+                                    passedID: notes[index]['id'].toString(),
+                                    passedNote: notes[index]['note'],
                                   );
                                 },
                               ),
@@ -73,8 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     onDismissed: (direction) {
-                      DatabaseHelpers()
-                          .delete(snapshot.data[index]['id'].toString());
+                      DatabaseHelpers().delete(notes[index]['id'].toString());
                     },
                     direction: DismissDirection.endToStart,
                   );

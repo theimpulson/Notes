@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:notes/database/database_helpers.dart';
 
 class EditNote extends StatefulWidget {
-  EditNote({@required this.passedID, @required this.passedNote});
+  EditNote({required this.passedID, required this.passedNote});
   final String passedID;
-  final String passedNote;
+  final String? passedNote;
 
   @override
   _EditNoteState createState() => _EditNoteState();

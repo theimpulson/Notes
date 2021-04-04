@@ -29,7 +29,7 @@ class LocalDrawer extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.share),
                   onPressed: () {
-                    return Share.share(
+                    Share.share(
                         'Check out this simple and useful Notes app on Github\n\nhttps://github.com/theimpulson/Notes');
                   },
                 )
@@ -56,7 +56,7 @@ class LocalDrawer extends StatelessWidget {
             title: Text('Help'),
             onTap: () {
               Navigator.pop(context);
-              return Scaffold.of(context).showSnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   backgroundColor: Theme.of(context).primaryColor,
                   content: Text(

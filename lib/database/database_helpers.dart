@@ -25,7 +25,7 @@ class DatabaseHelpers {
     /// Uses [dbID] as id to store the corresponding text stored in SharedPreferences
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    int idValue = prefs.getInt('dbID');
+    int idValue = prefs.getInt('dbID')!;
     final db = await DatabaseInit.instance.connectDB();
 
     await db.rawInsert(
